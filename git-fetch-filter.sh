@@ -171,7 +171,10 @@ while getopts "rl:tch" opt; do
             ;;
         t)
             local_cron_tag="# git-fetch-filter:"
-            mapfile -t cron_entries < <(crontab -l 2>/dev/null | grep "$local_cron_tag")
+            cron_entries=()
+            while IFS= read -r line; do
+                cron_entries+=("$line")
+            done < <(crontab -l 2>/dev/null | grep "$local_cron_tag")
             if [[ ${#cron_entries[@]} -eq 0 ]]; then
                 echo "Error: No cron jobs found. Run with -c to set one up."
                 exit 1
