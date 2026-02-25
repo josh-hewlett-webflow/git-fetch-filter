@@ -1,5 +1,12 @@
 # git-fetch-filter
 
+## Before & After
+
+| Before (`dev` is nowhere to be found) | After |
+|--------|-------|
+| <img width="400" alt="git-fetch-filter_before-img" src="https://github.com/user-attachments/assets/487241f7-6395-49bd-9ea7-1277f819f9f1"/> | <img width="400" alt="git-fetch-filter_after-img" src="https://github.com/user-attachments/assets/f833d0c3-4392-4ff0-87ec-706c92821c49"/> |
+
+## Summary
 In large repos with thousands of remote branches, `git fetch` tracks everything — bloating local storage and slowing operations. It also makes Git GUIs difficult to use, since your branches get buried under a sea of remote refs you don't need.
 
 You can solve this by manually managing fetch refspecs in your git config, but that requires updating them every time you create or delete a branch. This script is the "set it and forget it" solution — it only fetches remote refs for branches you have checked out locally (plus the default branch), since those are the only ones you need to be up-to-date on.
