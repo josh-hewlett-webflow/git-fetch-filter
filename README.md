@@ -1,6 +1,8 @@
 # git-fetch-filter
 
-In large repos with thousands of remote branches, `git fetch` tracks everything — bloating local storage and slowing operations. This script only fetches remote refs for branches you have checked out locally (plus the default branch), since those are the only ones you need to be up-to-date on.
+In large repos with thousands of remote branches, `git fetch` tracks everything — bloating local storage and slowing operations. It also makes Git GUIs difficult to use, since your branches get buried under a sea of remote refs you don't need.
+
+You can solve this by manually managing fetch refspecs in your git config, but that requires updating them every time you create or delete a branch. This script is the "set it and forget it" solution — it only fetches remote refs for branches you have checked out locally (plus the default branch), since those are the only ones you need to be up-to-date on.
 
 ## Quick Start
 

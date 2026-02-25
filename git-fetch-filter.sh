@@ -3,9 +3,10 @@
 # git-fetch-filter
 #
 # In large repos with thousands of remote branches, "git fetch" tracks everything,
-# bloating local storage and slowing operations. This script fetches only the
-# remote-tracking refs that correspond to your local branches (plus the default
-# branch), keeping your local environment lean.
+# bloating local storage and slowing operations. It also makes Git GUIs difficult
+# since your branches get buried under a sea of remote refs. This is the "set it
+# and forget it" solution — it fetches only the remote-tracking refs that correspond
+# to your local branches (plus the default branch), keeping your local environment lean.
 #
 # Can be run ad-hoc or on a schedule via the built-in cron setup (-c).
 
@@ -20,10 +21,14 @@ set -e
 
 displayUsage() {
     echo "In large repos with thousands of remote branches, 'git fetch' tracks everything,"
-    echo "bloating local storage and slowing operations. This script only fetches remote"
-    echo "refs for branches you have checked out locally (plus the default branch), since"
-    echo "those are the only ones you need to be up-to-date on. Branches you're not"
-    echo "actively working on don't need local tracking refs."
+    echo "bloating local storage and slowing operations. It also makes Git GUIs difficult"
+    echo "to use, since your branches get buried under a sea of remote refs you don't need."
+    echo ""
+    echo "You can solve this by manually managing fetch refspecs in your git config,"
+    echo "but that requires updating them every time you create or delete a branch. This"
+    echo "script is the 'set it and forget it' solution — it only fetches remote refs for"
+    echo "branches you have checked out locally (plus the default branch), since those are"
+    echo "the only ones you need to be up-to-date on."
     echo ""
     echo "If this is your first time using this script, run with -r to clean up your"
     echo "existing remote-tracking refs before switching to filtered fetches."
