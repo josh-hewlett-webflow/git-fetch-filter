@@ -8,14 +8,18 @@ You can solve this by manually managing fetch refspecs in your git config, but t
 
 ```bash
 # 1. Download and make executable
+mkdir -p ~/bin
 curl -fsSL https://raw.githubusercontent.com/josh-hewlett-webflow/git-fetch-filter/main/git-fetch-filter.sh -o ~/bin/git-fetch-filter
 chmod +x ~/bin/git-fetch-filter
 
-# 2. Clean up existing tracking refs (recommended for first run)
+# 2. Ensure ~/bin is on your PATH (add to ~/.zshrc or ~/.bashrc if not already)
+export PATH="$HOME/bin:$PATH"
+
+# 3. Clean up existing tracking refs (recommended for first run)
 cd ~/git/your-repo
 git-fetch-filter -r
 
-# 3. Set up automatic fetching via cron
+# 4. Set up automatic fetching via cron
 git-fetch-filter -c
 ```
 
